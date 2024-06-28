@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://fonts/ZhouFangRiMingTi/ZhouFangRiMingTi-2.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://resource/common/ui_asset/ui_press_f.gd" type="Script" id=5]
+
+[sub_resource type="StyleBoxFlat" id=5]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="ui_press_f" type="CanvasLayer"]
+script = ExtResource( 5 )
+
+[node name="control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -7.0
+margin_top = -2.0
+margin_right = -7.0
+margin_bottom = -2.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Panel" type="Panel" parent="control"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+margin_left = 1003.0
+margin_top = 403.0
+margin_right = 1103.0
+margin_bottom = 452.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="control/Panel"]
+anchor_left = 0.73
+anchor_top = 0.52
+anchor_right = 0.73
+anchor_bottom = 0.52
+margin_left = -16.0
+margin_top = -20.48
+margin_right = 16.0
+margin_bottom = 20.52
+custom_fonts/font = SubResource( 4 )
+text = "右"
+valign = 1
+
+[node name="Label2" type="Label" parent="control/Panel"]
+margin_right = 51.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 6 )
+text = "E"
+align = 1
+valign = 1
+
+[node name="Panel2" type="Panel" parent="control"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+margin_left = 877.0
+margin_top = 403.0
+margin_right = 977.0
+margin_bottom = 452.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="control/Panel2"]
+anchor_left = 0.73
+anchor_top = 0.52
+anchor_right = 0.73
+anchor_bottom = 0.52
+margin_left = -16.0
+margin_top = -20.48
+margin_right = 16.0
+margin_bottom = 20.52
+custom_fonts/font = SubResource( 4 )
+text = "左"
+valign = 1
+
+[node name="Label2" type="Label" parent="control/Panel2"]
+margin_right = 51.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 6 )
+text = "Q"
+align = 1
+valign = 1

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://resource/player/arrow/arrow.gd" type="Script" id=1]
+[ext_resource path="res://resource/particle/Asset/Animation/PlayerBullet.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://resource/src/Scenes/Smoketrail_Static.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2.99999, 1.58437 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 4.0
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.0165289, 0.0743802, 0.495868, 0.896694 )
+colors = PoolColorArray( 0, 0.109375, 1, 1, 0.568622, 0.0588942, 1, 1, 0.924011, 0.0273438, 1, 1, 1, 0.328125, 0.328125, 0 )
+
+[node name="player_bullet" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 25
+mass = 0.0153061
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 7.62939e-06, 0.00871897 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 2 )
+animation = "Fly"
+frame = 2
+playing = true
+
+[node name="arrow_hit_range" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arrow_hit_range"]
+shape = SubResource( 2 )
+
+[node name="Smoketrail" parent="." instance=ExtResource( 3 )]
+gradient_col = SubResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_arrow_body_entered"]

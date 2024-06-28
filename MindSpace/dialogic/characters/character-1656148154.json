@@ -1,0 +1,21 @@
+{
+	"color": "#ffff8df0",
+	"description": "北海姐姐加油",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1656148154.json",
+	"mirror_portraits": false,
+	"name": "北海姐姐",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://icon.png"
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}

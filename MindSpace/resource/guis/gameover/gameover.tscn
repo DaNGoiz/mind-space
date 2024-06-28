@@ -1,0 +1,183 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://resource/guis/index/res/themes/confirm_button.tres" type="StyleBox" id=1]
+[ext_resource path="res://fonts/ZhouFangRiMingTi/ZhouFangRiMingTi-2.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends CanvasLayer
+
+func _enter_tree():
+	get_tree().paused = true
+
+func panel_show():
+	get_child(0).visible = true
+	var tweenner = Tween.new()
+	add_child(tweenner)
+	tweenner.interpolate_property(get_child(0),\"modulate\",Color(1,1,1,0),Color(1,1,1,1),0.3,Tween.TRANS_CUBIC)
+	tweenner.interpolate_property(get_child(0),\"anchor_bottom\",0.75,0.5,0.3,Tween.TRANS_CUBIC)
+	tweenner.interpolate_property(get_child(0),\"anchor_top\",0.75,0.5,0.3,Tween.TRANS_CUBIC)
+	tweenner.start()
+
+func panel_hide():
+	var tweenner = Tween.new()
+	add_child(tweenner)
+	tweenner.interpolate_property(get_child(0),\"modulate\",Color(1,1,1,1),Color(1,1,1,0),0.3,Tween.TRANS_CUBIC)
+	tweenner.interpolate_property(get_child(0),\"anchor_bottom\",0.5,0.75,0.3,Tween.TRANS_CUBIC)
+	tweenner.interpolate_property(get_child(0),\"anchor_top\",0.5,0.75,0.3,Tween.TRANS_CUBIC)
+	tweenner.interpolate_callback(self,0.3,\"queue_free\")
+	tweenner.start()
+	pass
+
+func _exit_tree():
+	get_tree().paused = false
+
+func _fast_hide():
+	get_child(0).visible = false
+	pass
+"
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 0.823529 )
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.352941 )
+shadow_size = 6
+
+[sub_resource type="DynamicFont" id=2]
+size = 34
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.0980392 )
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0.729412, 1, 1 )
+corner_radius_top_left = 1024
+corner_radius_top_right = 1024
+corner_radius_bottom_right = 1024
+corner_radius_bottom_left = 1024
+corner_detail = 20
+shadow_color = Color( 0, 0, 0, 0.0980392 )
+shadow_size = 2
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Button
+
+
+func _pressed():
+	get_tree().quit()
+"
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Button
+
+
+func _pressed():
+	CS.change_scene(\"res://resource/guis/index/index.tscn\")
+	get_node(\"../../../\").panel_hide()
+	pass
+"
+
+[node name="gameover" type="CanvasLayer"]
+pause_mode = 2
+script = SubResource( 7 )
+
+[node name="panel" type="Panel" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -296.0
+margin_top = -81.0
+margin_right = 296.0
+margin_bottom = 81.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="panel"]
+pause_mode = 2
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 163.0
+margin_bottom = 54.0
+custom_constants/separation = 20
+
+[node name="Title" type="Label" parent="panel/VBoxContainer"]
+pause_mode = 2
+margin_right = 153.0
+margin_bottom = 44.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Game Over"
+valign = 1
+
+[node name="button_group" type="HBoxContainer" parent="panel"]
+pause_mode = 2
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -346.0
+margin_top = -49.0001
+margin_right = -11.9996
+margin_bottom = -9.00012
+alignment = 2
+
+[node name="Cancle" type="Button" parent="panel/button_group"]
+pause_mode = 2
+margin_left = 106.0
+margin_right = 218.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 112, 36 )
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "quit"
+script = SubResource( 5 )
+
+[node name="Confirm" type="Button" parent="panel/button_group"]
+pause_mode = 2
+margin_left = 222.0
+margin_right = 334.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 112, 36 )
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "back"
+script = SubResource( 6 )

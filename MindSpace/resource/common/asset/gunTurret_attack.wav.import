@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/gunTurret_attack.wav-76bb47c4f616f9dceb941a7050028240.sample"
+
+[deps]
+
+source_file="res://resource/common/asset/gunTurret_attack.wav"
+dest_files=[ "res://.import/gunTurret_attack.wav-76bb47c4f616f9dceb941a7050028240.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

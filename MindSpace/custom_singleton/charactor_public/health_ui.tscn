@@ -1,0 +1,126 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resource/common/asset/HeartUIFull.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends CanvasLayer
+
+var full = preload(\"res://resource/common/asset/HeartUIFull.png\")
+var empty = preload(\"res://resource/common/asset/HeartUIEmpty.png\")
+
+var full_texture_list = []
+
+func _ready():
+	_ini()
+
+func _ini():
+	for item in get_node(\"Control/HBoxContainer\").get_children():
+		var i = item.get_child(0)
+		full_texture_list.append(i)
+		pass
+
+func cut_health():
+	if len(full_texture_list) != 0:
+		# 列表末尾
+		var last_texture = full_texture_list.back()
+		# 设置空
+		last_texture.set(\"texture\",empty)
+		# 列表中删
+		full_texture_list.erase(last_texture)
+		pass
+	else:
+		push_error(\"心溢出了\")
+"
+
+[node name="health_ui" type="CanvasLayer"]
+script = SubResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+margin_right = 418.0
+margin_bottom = 70.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 74.0
+margin_bottom = 70.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 67.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 60, 0 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 78.0
+margin_right = 152.0
+margin_bottom = 70.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/PanelContainer2"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 67.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 60, 0 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
+
+[node name="PanelContainer3" type="PanelContainer" parent="Control/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 156.0
+margin_right = 230.0
+margin_bottom = 70.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/PanelContainer3"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 67.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 60, 0 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
+
+[node name="PanelContainer4" type="PanelContainer" parent="Control/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 234.0
+margin_right = 308.0
+margin_bottom = 70.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/PanelContainer4"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 67.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 60, 0 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
+
+[node name="PanelContainer5" type="PanelContainer" parent="Control/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 312.0
+margin_right = 386.0
+margin_bottom = 70.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/PanelContainer5"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 67.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 60, 0 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7

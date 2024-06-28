@@ -1,0 +1,66 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://resource/guis/ChangeScene/Source/Button4.png" type="Texture" id=1]
+[ext_resource path="res://resource/guis/ChangeScene/Source/Line4.png" type="Texture" id=2]
+[ext_resource path="res://resource/guis/ChangeScene/Source/Line6.png" type="Texture" id=3]
+[ext_resource path="res://resource/guis/ChangeScene/Source/Button2.png" type="Texture" id=4]
+[ext_resource path="res://resource/guis/ChangeScene/Source/Blank.png" type="Texture" id=5]
+[ext_resource path="res://resource/guis/ChangeScene/Source/Button3.png" type="Texture" id=6]
+[ext_resource path="res://resource/guis/ChangeScene/Source/Line2.png" type="Texture" id=7]
+[ext_resource path="res://resource/guis/ChangeScene/Source/Button1.png" type="Texture" id=8]
+[ext_resource path="res://resource/guis/ChangeScene/Source/Line1.png" type="Texture" id=9]
+[ext_resource path="res://resource/guis/ChangeScene/Source/Line3.png" type="Texture" id=10]
+[ext_resource path="res://resource/guis/ChangeScene/Source/Line5.png" type="Texture" id=11]
+[ext_resource path="res://resource/guis/ChangeScene/SceneBetween.gd" type="Script" id=12]
+
+[node name="Scene_Between" type="Node2D"]
+script = ExtResource( 12 )
+
+[node name="Blank" type="Sprite" parent="."]
+position = Vector2( 669, 328 )
+texture = ExtResource( 5 )
+
+[node name="Button" type="Node2D" parent="."]
+position = Vector2( 647, 471 )
+
+[node name="Sprite" type="Sprite" parent="Button"]
+visible = false
+texture = ExtResource( 8 )
+
+[node name="Sprite2" type="Sprite" parent="Button"]
+visible = false
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="Button"]
+visible = false
+texture = ExtResource( 6 )
+
+[node name="Sprite4" type="Sprite" parent="Button"]
+texture = ExtResource( 1 )
+
+[node name="Line" type="Node2D" parent="."]
+position = Vector2( 647, 471 )
+
+[node name="Sprite" type="Sprite" parent="Line"]
+visible = false
+texture = ExtResource( 9 )
+
+[node name="Sprite2" type="Sprite" parent="Line"]
+visible = false
+texture = ExtResource( 7 )
+
+[node name="Sprite3" type="Sprite" parent="Line"]
+visible = false
+texture = ExtResource( 10 )
+
+[node name="Sprite4" type="Sprite" parent="Line"]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="Sprite5" type="Sprite" parent="Line"]
+visible = false
+texture = ExtResource( 11 )
+
+[node name="Sprite6" type="Sprite" parent="Line"]
+visible = false
+texture = ExtResource( 3 )

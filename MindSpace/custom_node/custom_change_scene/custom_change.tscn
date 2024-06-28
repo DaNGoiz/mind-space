@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends CanvasLayer
+
+onready var black = get_child(0)
+
+func change_scene(path : String):
+	var tweenner = Tween.new()
+	tweenner.interpolate_property(
+		black,
+		\"color\",
+		Color(0,0,0,0),
+		Color(0,0,0,1),
+		0.3,Tween.TRANS_CUBIC,Tween.EASE_OUT
+	)
+	add_child(tweenner)
+	tweenner.start()
+	yield(tweenner,\"tween_completed\")
+	tweenner.queue_free()
+	get_tree().change_scene(path)
+	var tween = Tween.new()
+	tween.interpolate_property(
+		black,
+		\"color\",
+		Color(0,0,0,1),
+		Color(0,0,0,0),
+		0.3,Tween.TRANS_CUBIC,Tween.EASE_OUT
+	)
+	add_child(tween)
+	tween.start()
+	yield(tween,\"tween_completed\")
+	tween.queue_free()
+	pass
+"
+
+[node name="custom_change" type="CanvasLayer"]
+layer = 128
+script = SubResource( 1 )
+
+[node name="black" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}

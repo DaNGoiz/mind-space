@@ -1,0 +1,696 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "RunnableWrapper",
+"class": "AttackWrapper",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/component/runnable/AttackWrapper.gd"
+}, {
+"base": "BaseSkill",
+"class": "BaseDurationSkill",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/skills/Duration.gd"
+}, {
+"base": "BaseState",
+"class": "BaseExecuteState",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/statemachine/core/BaseExecuteState.gd"
+}, {
+"base": "Node",
+"class": "BaseSkill",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/skills/Skill.gd"
+}, {
+"base": "Node",
+"class": "BaseState",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/statemachine/core/BaseState.gd"
+}, {
+"base": "Node",
+"class": "BaseStateBlackboard",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/statemachine/core/BaseStateBlackboard.gd"
+}, {
+"base": "BaseState",
+"class": "BaseStateMachine",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/statemachine/core/BaseStateMachine.gd"
+}, {
+"base": "BaseStateMachine",
+"class": "BaseStateRoot",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/statemachine/core/BaseStateRoot.gd"
+}, {
+"base": "Node",
+"class": "BehaviorTree",
+"language": "GDScript",
+"path": "res://addons/behavior_tree_plugin/behavior_tree/BehaviorTree.gd"
+}, {
+"base": "Node",
+"class": "BehaviorTreeCondition",
+"language": "GDScript",
+"path": "res://addons/behavior_tree_plugin/behavior_tree/BehaviorTreeCondition.gd"
+}, {
+"base": "",
+"class": "BehaviorTreeConditionDecorator",
+"language": "GDScript",
+"path": "res://addons/behavior_tree_plugin/behavior_tree/BehaviorTreeConditionDecorator.gd"
+}, {
+"base": "Node",
+"class": "BehaviorTreeNode",
+"language": "GDScript",
+"path": "res://addons/behavior_tree_plugin/behavior_tree/BehaviorTreeNode.gd"
+}, {
+"base": "",
+"class": "BehaviorTreeNodeAction",
+"language": "GDScript",
+"path": "res://addons/behavior_tree_plugin/behavior_tree/BehaviorTreeNodeAction.gd"
+}, {
+"base": "",
+"class": "BehaviorTreeNodeConcurrent",
+"language": "GDScript",
+"path": "res://addons/behavior_tree_plugin/behavior_tree/BehaviorTreeNodeConcurrent.gd"
+}, {
+"base": "",
+"class": "BehaviorTreeNodePrioritySelector",
+"language": "GDScript",
+"path": "res://addons/behavior_tree_plugin/behavior_tree/BehaviorTreeNodePrioritySelector.gd"
+}, {
+"base": "",
+"class": "BehaviorTreeNodeProxy",
+"language": "GDScript",
+"path": "res://addons/behavior_tree_plugin/behavior_tree/BehaviorTreeNodeProxy.gd"
+}, {
+"base": "",
+"class": "BehaviorTreeNodeRandomSelector",
+"language": "GDScript",
+"path": "res://addons/behavior_tree_plugin/behavior_tree/BehaviorTreeNodeRandomSelector.gd"
+}, {
+"base": "",
+"class": "BehaviorTreeNodeSequenceSelector",
+"language": "GDScript",
+"path": "res://addons/behavior_tree_plugin/behavior_tree/BehaviorTreeNodeSequenceSelector.gd"
+}, {
+"base": "Resource",
+"class": "BehaviorTreeResource",
+"language": "GDScript",
+"path": "res://addons/behavior_tree_plugin/behavior_tree_editor/BehaviorTreeResource.gd"
+}, {
+"base": "Resource",
+"class": "BehaviorTreeScriptDataResource",
+"language": "GDScript",
+"path": "res://addons/behavior_tree_plugin/behavior_tree_editor/BehaviorTreeScriptDataResource.gd"
+}, {
+"base": "Parasitic",
+"class": "CameraLimitByMap",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/parasitic/node2d/camear2d/CameraLimitByMap.gd"
+}, {
+"base": "Parasitic",
+"class": "CameraShake",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/parasitic/node2d/camear2d/CameraShake.gd"
+}, {
+"base": "Parasitic",
+"class": "CameraZoomByMap",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/parasitic/node2d/camear2d/CameraZoomByMap.gd"
+}, {
+"base": "Node",
+"class": "CollisionWare",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/parasitic/node2d/CollisionWare.gd"
+}, {
+"base": "PanelContainer",
+"class": "ConditionEditor",
+"language": "GDScript",
+"path": "res://addons/StateGraph/GraphEditor/ConditionEditor.gd"
+}, {
+"base": "Parasitic",
+"class": "ControlParasitic",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/parasitic/ControlParasitic.gd"
+}, {
+"base": "Wrapper",
+"class": "CounterWrapper",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/component/CounterWrapper.gd"
+}, {
+"base": "Reference",
+"class": "DTS",
+"language": "GDScript",
+"path": "res://addons/dialogic/Localization/translation_service.gd"
+}, {
+"base": "Parasitic",
+"class": "DamageArea",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/parasitic/node2d/area2d/DamageArea.gd"
+}, {
+"base": "Wrapper",
+"class": "DamageWrapper",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/component/DamageWrapper.gd"
+}, {
+"base": "Reference",
+"class": "Debug",
+"language": "GDScript",
+"path": "res://resource/particle/Scripts/debug.gd"
+}, {
+"base": "Area2D",
+"class": "DetectBody",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/node_util/node2d/area2d/DetectBody.gd"
+}, {
+"base": "Node",
+"class": "Dialogic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicClass.gd"
+}, {
+"base": "Reference",
+"class": "DialogicAnimaPropertiesHelper",
+"language": "GDScript",
+"path": "res://addons/dialogic/Nodes/Anima/DialogicAnimaPropertiesHelper.gd"
+}, {
+"base": "Node",
+"class": "DialogicAnimaResources",
+"language": "GDScript",
+"path": "res://addons/dialogic/Nodes/Anima/DialogicAnimaResources.gd"
+}, {
+"base": "Control",
+"class": "DialogicBackgroundMusic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Nodes/BackgroundMusic.gd"
+}, {
+"base": "Node",
+"class": "DialogicCustomEvents",
+"language": "GDScript",
+"path": "res://addons/dialogic/Nodes/DialogicCustomEvents.gd"
+}, {
+"base": "Node",
+"class": "DialogicDefinitionsUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicDefinitionsUtil.gd"
+}, {
+"base": "Node",
+"class": "DialogicParser",
+"language": "GDScript",
+"path": "res://addons/dialogic/Parser/DialogicParser.gd"
+}, {
+"base": "Reference",
+"class": "DialogicResources",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicResources.gd"
+}, {
+"base": "Reference",
+"class": "DialogicUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicUtil.gd"
+}, {
+"base": "Node",
+"class": "DoubleClickReloadGame",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/node_util/DoubleClickReloadGame.gd"
+}, {
+"base": "Wrapper",
+"class": "EquipmentWrapper",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/component/EquipmentWrapper.gd"
+}, {
+"base": "Control",
+"class": "FSM_Connexion",
+"language": "GDScript",
+"path": "res://addons/StateGraph/GraphEditor/FSM_Connexion.gd"
+}, {
+"base": "Container",
+"class": "FSM_ConnexionContainer",
+"language": "GDScript",
+"path": "res://addons/StateGraph/GraphEditor/FSM_ConnexionContainer.gd"
+}, {
+"base": "RunnableWrapper",
+"class": "FallWrapper",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/component/runnable/FallWrapper.gd"
+}, {
+"base": "Reference",
+"class": "FileUtil",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/class_util/FileUtil.gd"
+}, {
+"base": "Button",
+"class": "GraphButton",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/statemachine/scene/GraphButton.gd"
+}, {
+"base": "Control",
+"class": "GraphEditor",
+"language": "GDScript",
+"path": "res://addons/StateGraph/GraphEditor/GraphEditor.gd"
+}, {
+"base": "Node",
+"class": "Gravity",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/node_util/node2d/Gravity.gd"
+}, {
+"base": "Node",
+"class": "GridAutoColumns",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/node_util/control/container/grid/GridAutoColumns.gd"
+}, {
+"base": "PanelContainer",
+"class": "HistoryRow",
+"language": "GDScript",
+"path": "res://addons/dialogic/Example Assets/History/HistoryRow.gd"
+}, {
+"base": "Node",
+"class": "InputController",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/node_util/InputController.gd"
+}, {
+"base": "Wrapper",
+"class": "IntervalWrapper",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/component/IntervalWrapper.gd"
+}, {
+"base": "Node",
+"class": "ItemManager",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/item/core/ItemDataManager.gd"
+}, {
+"base": "Wrapper",
+"class": "ItemWrapper",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/component/ItemWrapper.gd"
+}, {
+"base": "Reference",
+"class": "JsonConverter",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/class_util/JsonConverter.gd"
+}, {
+"base": "Reference",
+"class": "Logger",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/class_util/Logger.gd"
+}, {
+"base": "Reference",
+"class": "MathUtil",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/class_util/Math.gd"
+}, {
+"base": "Parasitic",
+"class": "MoveTo",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/parasitic/node2d/MoveTo.gd"
+}, {
+"base": "Reference",
+"class": "MySQLUtil",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/class_util/MySqlUtil.gd"
+}, {
+"base": "Reference",
+"class": "Node2DUtil",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/class_util/Node2DUtil.gd"
+}, {
+"base": "Node",
+"class": "NodeInterface",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/node_util/NodeInterface.gd"
+}, {
+"base": "Wrapper",
+"class": "NodePoolWrapper",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/component/NodePoolWrapper.gd"
+}, {
+"base": "Reference",
+"class": "ObjectUtil",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/class_util/ObjectUtil.gd"
+}, {
+"base": "Node",
+"class": "Parasitic",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/parasitic/Parasitic.gd"
+}, {
+"base": "Wrapper",
+"class": "PropertyWrapper",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/component/PropertyWrapper.gd"
+}, {
+"base": "StateMachine",
+"class": "PushdownAutomata",
+"language": "GDScript",
+"path": "res://addons/StateGraph/StateMachine/PushdownAutomata/PushdownAutomata.gd"
+}, {
+"base": "Reference",
+"class": "RegExUtil",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/class_util/RegExUtil.gd"
+}, {
+"base": "Wrapper",
+"class": "RunnableWrapper",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/core/RunnableWrapper.gd"
+}, {
+"base": "Reference",
+"class": "ScriptParser",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/class_util/ScriptParser.gd"
+}, {
+"base": "Reference",
+"class": "ScriptUtil",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/class_util/ScriptUtil.gd"
+}, {
+"base": "Reference",
+"class": "SignalProxy",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/node_util/SignalProxy.gd"
+}, {
+"base": "Node",
+"class": "SimplePlatformController",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/parasitic/node2d/SimplePlatformController.gd"
+}, {
+"base": "Reference",
+"class": "SkillInterface",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/skills/SkillInterface.gd"
+}, {
+"base": "Parasitic",
+"class": "SpeedCurve",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/parasitic/SpeedCurve.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://addons/StateGraph/StateMachine/State.gd"
+}, {
+"base": "Node",
+"class": "StateAnimationHandler",
+"language": "GDScript",
+"path": "res://addons/StateGraph/StateMachine/StateAnimationHandler/StateAnimationHandler.gd"
+}, {
+"base": "Reference",
+"class": "StateExecuteParser",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/statemachine/core/StateExecuteParser.gd"
+}, {
+"base": "EditorPlugin",
+"class": "StateGraph",
+"language": "GDScript",
+"path": "res://addons/StateGraph/StateGraph.gd"
+}, {
+"base": "Label",
+"class": "StateLabel",
+"language": "GDScript",
+"path": "res://addons/StateGraph/StateMachine/StateLabel.gd"
+}, {
+"base": "State",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://addons/StateGraph/StateMachine/StateMachine.gd"
+}, {
+"base": "Reference",
+"class": "StateMachineCodeTemplate",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/statemachine/generate/StateMachineCodeTemplate.gd"
+}, {
+"base": "Reference",
+"class": "StateMachineGenerator",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/statemachine/generate/StateMachineGenerator.gd"
+}, {
+"base": "Parasitic",
+"class": "Swing",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/parasitic/node2d/Swing.gd"
+}, {
+"base": "RemoteTransform2D",
+"class": "TopLevel",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/node_util/node2d/Toplevel.gd"
+}, {
+"base": "Parasitic",
+"class": "TurnToMouse",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/parasitic/node2d/TurnToMouse.gd"
+}, {
+"base": "Reference",
+"class": "Wrapper",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/core/Wrapper.gd"
+}, {
+"base": "Reference",
+"class": "WrapperHelper",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/WrapperHelper.gd"
+}, {
+"base": "Reference",
+"class": "WrapperInterface",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/core/WrapperInterface.gd"
+}, {
+"base": "Resource",
+"class": "__ItemData__",
+"language": "GDScript",
+"path": "res://tool_scripts/apprentice_toolbox/wrapper/item/core/ItemData.gd"
+}, {
+"base": "Reference",
+"class": "debug",
+"language": "GDScript",
+"path": "res://custom_node/debug.gd"
+}, {
+"base": "Reference",
+"class": "input_manager_tool",
+"language": "GDScript",
+"path": "res://custom_singleton/input_manager/static_tool.gd"
+}, {
+"base": "Node2D",
+"class": "test",
+"language": "GDScript",
+"path": "res://resource/particle/Scripts/test.gd"
+}, {
+"base": "Reference",
+"class": "util",
+"language": "GDScript",
+"path": "res://custom_node/util.gd"
+} ]
+_global_script_class_icons={
+"AttackWrapper": "",
+"BaseDurationSkill": "",
+"BaseExecuteState": "",
+"BaseSkill": "",
+"BaseState": "",
+"BaseStateBlackboard": "",
+"BaseStateMachine": "",
+"BaseStateRoot": "",
+"BehaviorTree": "",
+"BehaviorTreeCondition": "",
+"BehaviorTreeConditionDecorator": "",
+"BehaviorTreeNode": "",
+"BehaviorTreeNodeAction": "",
+"BehaviorTreeNodeConcurrent": "",
+"BehaviorTreeNodePrioritySelector": "",
+"BehaviorTreeNodeProxy": "",
+"BehaviorTreeNodeRandomSelector": "",
+"BehaviorTreeNodeSequenceSelector": "",
+"BehaviorTreeResource": "",
+"BehaviorTreeScriptDataResource": "",
+"CameraLimitByMap": "",
+"CameraShake": "",
+"CameraZoomByMap": "",
+"CollisionWare": "",
+"ConditionEditor": "",
+"ControlParasitic": "",
+"CounterWrapper": "",
+"DTS": "",
+"DamageArea": "",
+"DamageWrapper": "",
+"Debug": "",
+"DetectBody": "",
+"Dialogic": "",
+"DialogicAnimaPropertiesHelper": "",
+"DialogicAnimaResources": "",
+"DialogicBackgroundMusic": "",
+"DialogicCustomEvents": "",
+"DialogicDefinitionsUtil": "",
+"DialogicParser": "",
+"DialogicResources": "",
+"DialogicUtil": "",
+"DoubleClickReloadGame": "",
+"EquipmentWrapper": "",
+"FSM_Connexion": "",
+"FSM_ConnexionContainer": "",
+"FallWrapper": "",
+"FileUtil": "",
+"GraphButton": "",
+"GraphEditor": "",
+"Gravity": "",
+"GridAutoColumns": "",
+"HistoryRow": "",
+"InputController": "",
+"IntervalWrapper": "",
+"ItemManager": "",
+"ItemWrapper": "",
+"JsonConverter": "",
+"Logger": "",
+"MathUtil": "",
+"MoveTo": "",
+"MySQLUtil": "",
+"Node2DUtil": "",
+"NodeInterface": "",
+"NodePoolWrapper": "",
+"ObjectUtil": "",
+"Parasitic": "",
+"PropertyWrapper": "",
+"PushdownAutomata": "",
+"RegExUtil": "",
+"RunnableWrapper": "",
+"ScriptParser": "",
+"ScriptUtil": "",
+"SignalProxy": "",
+"SimplePlatformController": "",
+"SkillInterface": "",
+"SpeedCurve": "",
+"State": "",
+"StateAnimationHandler": "",
+"StateExecuteParser": "",
+"StateGraph": "",
+"StateLabel": "",
+"StateMachine": "",
+"StateMachineCodeTemplate": "",
+"StateMachineGenerator": "",
+"Swing": "",
+"TopLevel": "",
+"TurnToMouse": "",
+"Wrapper": "",
+"WrapperHelper": "",
+"WrapperInterface": "",
+"__ItemData__": "",
+"debug": "",
+"input_manager_tool": "",
+"test": "",
+"util": ""
+}
+
+[application]
+
+config/name="CiGAGameJam2022"
+run/main_scene="res://resource/guis/index/index.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+charactor_input_manager="*res://custom_class/charactor_input_manager.gd"
+ui_press_f="*res://resource/common/ui_asset/ui_press_f.tscn"
+health_ui="*res://custom_singleton/charactor_public/health_ui.tscn"
+charactor_public="*res://custom_singleton/charactor_public/charactor_public.gd"
+CS="*res://custom_node/custom_change_scene/custom_change.tscn"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/StateGraph/plugin.cfg", "res://addons/dialogic/plugin.cfg" )
+
+[input]
+
+ui_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+run={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+dialogic_default_action={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":true,"doubleclick":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+shoot={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":74,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+push={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+drag={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+interact={
+"deadzone": 0.5,
+"events": [  ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="player_hurtbox"
+2d_physics/layer_4="enemy_hurtbox"
+2d_physics/layer_5="enemy"
+2d_physics/layer_6="world_item"
+2d_physics/layer_7="platform"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+2d/physics_engine="GodotPhysics"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resource/actor_textures/PlayerSprite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resource/player/player.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+player_sprite = NodePath("PlayerSprite")
+
+[node name="PlayerSprite" parent="." instance=ExtResource( 1 )]
+position = Vector2( 4, -17 )
+scale = Vector2( 2.00285, 1.88401 )
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )

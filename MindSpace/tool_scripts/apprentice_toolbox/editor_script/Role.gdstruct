@@ -1,0 +1,137 @@
+
+======================== <Resource>
+[Player_CircleShape] CircleShape2D { radius : 16 }
+[Enemy_CircleShape] CircleShape2D { radius : 16 }
+[DetectObjectShape] RectangleShape2D { extents : (32, 32) }
+=================================================================
+
+
+
+======================== RoleBase.gd
+class_name RoleBase
+extends KinematicBody2D
+
+
+export var property : Dictionary = {
+  "health": 1,
+  "move_speed": 60,
+}
+
+
+=================================================================
+
+
+======================== Player.gd
+class_name Player
+extends RoleBase
+
+
+func _ready():
+    pass
+
+
+=================================================================
+
+
+======================== Enemy.gd
+class_name Enemy
+extends RoleBase
+
+
+func _ready():
+    pass
+
+
+=================================================================
+
+
+======================== PlayerBlackboard.gd
+class_name PlayerBlackboard
+extends BaseStateBlackboard
+
+=================================================================
+
+======================== PlayerState.gd
+class_name PlayerBaseState
+extends BaseState
+
+
+func get_host() -> Player:
+  return .get_host() as Player
+
+func get_blackboard() -> PlayerBlackboard:
+  return .get_blackboard() as PlayerBlackboard
+
+
+=================================================================
+
+
+======================== EnemyBlackboard.gd
+class_name EnemyBlackboard
+extends BaseStateBlackboard
+
+
+
+=================================================================
+
+======================== EnemyState.gd
+class_name EnemyBaseState
+extends BaseState
+
+
+func get_host() -> Enemy:
+  return .get_host() as Enemy
+
+func get_blackboard() -> EnemyBlackboard:
+  return .get_blackboard() as EnemyBlackboard
+
+
+=================================================================
+
+
+
+
+======================== Player.tscn 
+Player<KinematicBody2D>{script: @Player.gd}
+  CollisionShape2D<CollisionShape2D>{shape:Player_CircleShape}
+  TypeLayer<Node2D>
+    Canvas<Node2D>
+      Sprite<Sprite>
+        AnimationPlayer<AnimationPlayer>
+    Collision<Node2D>
+      DetectEnemy<Area2D>
+        CollisionShape2D<CollisionShape2D>{shape:DetectObjectShape}
+    Data<Node>
+    StateMachine<Node:PlayerStateMachine>
+      Blackboard<Node>{script:@PlayerBlackboard.gd}
+      Base<Node:PlayerState>{script:@PlayerState.gd}
+      Idle<Node:PlayerState>
+      Run<Node:PlayerState>
+=================================================================
+
+
+======================== Enemy.tscn 
+Enemy<KinematicBody2D>{script: @Enemy.gd}
+  CollisionShape2D<CollisionShape2D>{shape:Enemy_CircleShape}
+  TypeLayer<Node2D>
+    Canvas<Node2D>
+      Sprite<Sprite>
+        AnimationPlayer<AnimationPlayer>
+    Collision<Node2D>
+      DetectPlayer<Area2D>
+        CollisionShape2D<CollisionShape2D>{shape:DetectObjectShape}
+    Data<Node>
+    StateMachine<Node:EnemyStateMachine>
+      Blackboard<Node>{script:@EnemyBlackboard.gd}
+      Base<Node:EnemyState>{script:@EnemyState.gd}
+      Idle<Node:EnemyState>
+      Run<Node:EnemyState>
+=================================================================
+
+
+
+
+
+
+
+
